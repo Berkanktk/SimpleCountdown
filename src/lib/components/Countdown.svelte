@@ -40,7 +40,7 @@
   });
 </script>
 
-<div class=" p-8 rounded-lg">
+<div class="p-8 rounded-lg self-center">
   {#if isFinished}
     <div class="text-4xl text-center">
       Time for <span style="color: red;">{eventName}! </span>
@@ -59,11 +59,31 @@
       />
     </div>
   {:else}
-    <div class="text-4xl text-center">
-      {days} Days <br />
-      {hours} Hours <br />
-      {minutes} Minutes <br />
-      {seconds} Seconds
+    <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+      <div class="flex flex-col">
+        <span class="countdown font-mono text-5xl">
+          <span style="--value:{days};" />
+        </span>
+        days
+      </div>
+      <div class="flex flex-col">
+        <span class="countdown font-mono text-5xl">
+          <span style="--value:{hours};" />
+        </span>
+        hours
+      </div>
+      <div class="flex flex-col">
+        <span class="countdown font-mono text-5xl">
+          <span style="--value:{minutes};" />
+        </span>
+        min
+      </div>
+      <div class="flex flex-col">
+        <span class="countdown font-mono text-5xl">
+          <span style="--value:{seconds};" />
+        </span>
+        sec
+      </div>
     </div>
   {/if}
 </div>
