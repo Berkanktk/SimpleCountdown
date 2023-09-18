@@ -85,9 +85,6 @@
       
       {#if targetDate}
         <Countdown targetDate={targetDate} eventName={eventName} />
-        {#if isFinished}
-          <button on:click={clearAll} class="btn btn-secondary w-1/2 mx-auto">Reset</button>
-        {/if}
       {/if}
 
       {#if isRunning}
