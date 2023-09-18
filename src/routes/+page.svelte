@@ -46,6 +46,7 @@
       <input
         
         type="text"
+        disabled={isRunning}
         bind:value={eventName}
         class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
         placeholder="Graduation..."
@@ -78,6 +79,10 @@
     {/if}
 
     <button disabled={isRunning} on:click={setTargetDate} class="btn btn-primary w-full">Set Countdown</button>
+
+    {#if isRunning}
+        <button on:click={clearAll} class="btn btn-secondary w-full">Reset</button>
+    {/if}
 
     {#if isSuccessful}
       <div class="toast">
