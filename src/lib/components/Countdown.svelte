@@ -9,7 +9,7 @@
   import { checkFinished, checkRunning } from "../../routes/stores.js";
 
   export let targetDate: string;
-  export let eventName: string;
+  export const eventName: string = "Graduation...";
 
   let days: number = 0;
   let hours: number = 0;
