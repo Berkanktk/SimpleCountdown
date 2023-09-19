@@ -42,7 +42,7 @@
   <div class="mb-4 flex flex-col space-y-4 w-68 mx-auto">
 
     {#if !hideForm}
-      <h1 class="text-5xl mb-8 text-center">Countdown <span style="color: red; font-weight: bold">Timer</span></h1>
+      <h1 class="text-5xl mb-8 text-center">Countdown <span class="cool-effect" style="color: red; font-weight: bold">Timer</span></h1>
       <label for="eventName" class="block text-sm font-medium">Event Name</label>
       <div class="relative rounded-md shadow-sm">
         <input
@@ -113,3 +113,9 @@
 {/if}
 
 <p class="absolute bottom-3 right-3 text-gray-500 select-none">Find other projcts <a target="_blank" style="color: red;" href="https://github.com/berkanktk/projects">here</a>.</p>
+
+<style>
+  .cool-effect {
+    text-shadow: 0px 0px 10px rgba(255, 0, 0, .5);
+  }
+</style>
