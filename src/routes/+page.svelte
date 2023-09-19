@@ -43,6 +43,7 @@
 
     {#if !hideForm}
       <h1 class="text-5xl mb-8 text-center">Countdown <span style="color: red; font-weight: bold">Timer</span></h1>
+      <label for="eventName" class="block text-sm font-medium">Event Name</label>
       <div class="relative rounded-md shadow-sm">
         <input
           type="text"
@@ -54,22 +55,28 @@
       </div>
 
       <div class="flex justify-between">
-        <div class="relative rounded-md shadow-sm">
-          <input
-            disabled={isRunning}
-            type="date"
-            bind:value={date}
-            class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
-          />
+        <div>
+          <label for="date" class="block text-sm font-medium mb-4">Date</label>
+          <div class="relative rounded-md shadow-sm">
+            <input
+              disabled={isRunning}
+              type="date"
+              bind:value={date}
+              class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
+            />
+          </div>
         </div>
 
-        <div class="relative rounded-md shadow-sm">
-          <input
-            disabled={isRunning}
-            type="time"
-            bind:value={time}
-            class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
-          />
+        <div>
+          <label for="time" class="block text-sm font-medium mb-4">Time</label>
+          <div class="relative rounded-md shadow-sm">
+            <input
+              disabled={isRunning}
+              type="time"
+              bind:value={time}
+              class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
+            />
+          </div>
         </div>
       </div>
 
