@@ -39,9 +39,8 @@
 </script>
 
 <main class="flex min-h-screen items-center justify-center bg-gradient-to-r from-black to-gray-900 text-white p-8 rounded-lg h-screen">
-  <div class="mb-4 flex flex-col space-y-4 w-1/2 mx-auto">
+  <div class="mb-4 flex flex-col space-y-4 w-68 mx-auto">
 
-    
     {#if !hideForm}
       <h1 class="text-5xl mb-8 text-center">Countdown Timer</h1>
       <div class="relative rounded-md shadow-sm">
