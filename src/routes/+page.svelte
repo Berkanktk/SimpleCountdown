@@ -1,6 +1,6 @@
 <script lang="ts">
   import Countdown from "$lib/components/Countdown.svelte";
-  import { checkFinished, checkRunning } from './stores.js';
+  import { checkFinished, checkRunning } from "./stores.js";
 
   let date: string = "";
   let time: string = "";
@@ -8,11 +8,12 @@
   let isError: boolean = false;
   let isSuccessful: boolean = false;
   let eventName: string = "";
+  let hideForm: boolean = false;
 
-  let isFinished : boolean = false;
+  let isFinished: boolean = false;
   $: isFinished = $checkFinished;
 
-  let isRunning : boolean = false;
+  let isRunning: boolean = false;
   $: isRunning = $checkRunning;
 
   async function setTargetDate() {
@@ -23,8 +24,9 @@
     isSuccessful = true;
     checkRunning.update(() => true);
     isError = false;
+    hideForm = true;
     targetDate = `${date}T${time}`;
-    
+
     // Remove the toast after 5 seconds
     setTimeout(() => {
       isSuccessful = false;
@@ -34,18 +36,16 @@
   function clearAll() {
     window.location.reload();
   }
-
 </script>
 
 <main class="flex min-h-screen items-center justify-center bg-gradient-to-r from-black to-gray-900 text-white p-8 rounded-lg h-screen">
-
   <div class="mb-4 flex flex-col space-y-4 w-1/2 mx-auto">
-    <!-- <h1 class="text-5xl mb-4">Countdown</h1> -->
+
     
-    {#if !isRunning}
+    {#if !hideForm}
+      <h1 class="text-5xl mb-8 text-center">Countdown Timer</h1>
       <div class="relative rounded-md shadow-sm">
         <input
-          
           type="text"
           disabled={isRunning}
           bind:value={eventName}
@@ -53,47 +53,50 @@
           placeholder="Graduation..."
         />
       </div>
-      
-      <div class="relative rounded-md shadow-sm">
-        <input
-          disabled={isRunning}
-          type="date"
-          bind:value={date}
-          class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
-        />
+
+      <div class="flex justify-between">
+        <div class="relative rounded-md shadow-sm">
+          <input
+            disabled={isRunning}
+            type="date"
+            bind:value={date}
+            class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
+          />
+        </div>
+
+        <div class="relative rounded-md shadow-sm">
+          <input
+            disabled={isRunning}
+            type="time"
+            bind:value={time}
+            class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
+          />
+        </div>
       </div>
 
-      <div class="relative rounded-md shadow-sm">
-        <input
-          disabled={isRunning}
-          type="time"
-          bind:value={time}
-          class="form-input block w-full py-2 px-3 rounded-md bg-gray-800 text-white"
-        />
-      </div>
-      
       {#if isError}
         <div class="alert alert-error">
-          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span>Enter information.</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg >
+          <span>Missing information.</span>
         </div>
       {/if}
 
       <button disabled={isRunning} on:click={setTargetDate} class="btn btn-primary w-full">Start Countdown</button>
-
     {/if}
-      
-      {#if targetDate}
-        <Countdown targetDate={targetDate} eventName={eventName} />
-      {/if}
 
+    {#if hideForm}
       {#if isRunning}
-          <button on:click={clearAll} class="btn btn-secondary w-full">Reset</button>
+        <h2 class="text-5xl mb-4 text-center">Time until, <span class="text-red-600">{eventName}.</span></h2>
+      {:else}
+        <h2 class="text-5xl mb-4 text-center">Time for, <span class="text-red-600">{eventName}.</span></h2>
       {/if}
-    </div>
+    
+      <Countdown {targetDate} {eventName} />
+      <button on:click={clearAll} class="btn btn-secondary w-full">Reset</button>
+    {/if}
 
+  </div>
 </main>
-
 
 {#if isSuccessful}
   <div class="toast">

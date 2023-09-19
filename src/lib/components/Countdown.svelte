@@ -43,7 +43,6 @@
 <div class="p-8 rounded-lg self-center">
   {#if isFinished}
     <div class="text-4xl text-center">
-      Time for <span style="color: red;">{eventName}! </span>
       <ConfettiCannon
         origin={[window.innerWidth / 2, window.innerHeight]}
         angle={-90}
@@ -58,32 +57,32 @@
         ]}
       />
     </div>
-  {:else}
-    <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
-      <div class="flex flex-col">
-        <span class="countdown font-mono text-5xl">
-          <span style="--value:{days};" />
-        </span>
-        days
-      </div>
-      <div class="flex flex-col">
-        <span class="countdown font-mono text-5xl">
-          <span style="--value:{hours};" />
-        </span>
-        hours
-      </div>
-      <div class="flex flex-col">
-        <span class="countdown font-mono text-5xl">
-          <span style="--value:{minutes};" />
-        </span>
-        min
-      </div>
-      <div class="flex flex-col">
-        <span class="countdown font-mono text-5xl">
-          <span style="--value:{seconds};" />
-        </span>
-        sec
-      </div>
-    </div>
   {/if}
+
+  <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+    <div class="flex flex-col">
+      <span class="countdown font-mono text-5xl">
+        <span style="--value:{isFinished ? 0 : days};" />
+      </span>
+      days
+    </div>
+    <div class="flex flex-col">
+      <span class="countdown font-mono text-5xl">
+        <span style="--value:{isFinished ? 0 : hours};" />
+      </span>
+      hours
+    </div>
+    <div class="flex flex-col">
+      <span class="countdown font-mono text-5xl">
+        <span style="--value:{isFinished ? 0 : minutes};" />
+      </span>
+      min
+    </div>
+    <div class="flex flex-col">
+      <span class="countdown font-mono text-5xl">
+        <span style="--value:{isFinished ? 0 : seconds};" />
+      </span>
+      sec
+    </div>
+  </div>
 </div>
