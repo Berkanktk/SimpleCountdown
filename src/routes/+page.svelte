@@ -111,3 +111,5 @@
     </div>
   </div>
 {/if}
+
+<p class="absolute bottom-3 right-3 text-gray-500 select-none">Find other projcts <a target="_blank" style="color: red;" href="https://github.com/berkanktk/projects">here</a>.</p>
