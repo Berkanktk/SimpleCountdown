@@ -42,7 +42,7 @@
   <div class="mb-4 flex flex-col space-y-4 w-68 mx-auto">
 
     {#if !hideForm}
-      <h1 class="text-5xl mb-8 text-center">Countdown Timer</h1>
+      <h1 class="text-5xl mb-8 text-center">Countdown <span style="color: red; font-weight: bold">Timer</span></h1>
       <div class="relative rounded-md shadow-sm">
         <input
           type="text"
